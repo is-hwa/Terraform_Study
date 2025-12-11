@@ -6,6 +6,10 @@
 .terraform/
 .terraform/**/*
 
+############## lock files ###################
+.terraform.lock.hcl
+**/.terraform.lock.hcl
+
 # --- Terraform state files ---
 terraform.tfstate
 terraform.tfstate.*
