@@ -49,7 +49,7 @@ resource "aws_vpc_security_group_ingress_rule" "mySG_22" {
 resource "aws_vpc_security_group_egress_rule" "mySG_all" {
   security_group_id = aws_security_group.mySG.id
   cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" 
+  ip_protocol       = "-1"
 }
 
 
@@ -70,13 +70,13 @@ resource "aws_key_pair" "mykeypair" {
 
 resource "aws_instance" "myEC2" {
   # AMI: amazon linux 2023 ami
-  ami           = "ami-00e428798e77d38d9"
-  instance_type = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.mySG.id]
+  ami                         = "ami-00e428798e77d38d9"
+  instance_type               = "t3.micro"
+  vpc_security_group_ids      = [aws_security_group.mySG.id]
   user_data_replace_on_change = true
-  key_name = "mykeypair"
-  subnet_id = aws_subnet.myPubSN.id
-  user_data = <<-EOF
+  key_name                    = "mykeypair"
+  subnet_id                   = aws_subnet.myPubSN.id
+  user_data                   = <<-EOF
         #!/bin/bash
         dnf install -y httpd mod_ssl
         echo "My Web Server Test Page" > /var/www/html/index.html

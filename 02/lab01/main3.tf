@@ -15,7 +15,7 @@
 # * NAT Gateway를 PubSN에 생성
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway
 resource "aws_eip" "myEIP" {
-  domain   = "vpc"
+  domain = "vpc"
 
   tags = {
     Name = "myEIP"
@@ -138,13 +138,13 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 
 #
 resource "aws_instance" "myEC2-2" {
-  ami           = "ami-00e428798e77d38d9"
-  instance_type = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.mySG-2.id]
-  subnet_id = aws_subnet.myPriSN.id
-  key_name = "mykeypair"
+  ami                         = "ami-00e428798e77d38d9"
+  instance_type               = "t3.micro"
+  vpc_security_group_ids      = [aws_security_group.mySG-2.id]
+  subnet_id                   = aws_subnet.myPriSN.id
+  key_name                    = "mykeypair"
   user_data_replace_on_change = true
-  user_data = <<-EOF
+  user_data                   = <<-EOF
         #!/bin/bash
         dnf install -y httpd mod_ssl
         echo "My Web Server 2 Test Page" > /var/www/html/index.html
