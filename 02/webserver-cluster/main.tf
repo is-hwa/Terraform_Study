@@ -5,4 +5,7 @@
 # * ALB 생성
 # * ALB Listener 생성
 # 2. ASG
+# * SG 생성
+# * launch Tmeplate 생성 
+# * ASG 생성
 #################################
